@@ -535,20 +535,21 @@ void InputWindowPaint(FcitxXlibWindow* window, cairo_t* c)
     // draw cursor
     if (FcitxMessagesGetMessageCount(msgup) && FcitxInputStateGetShowCursor(input)) {
         cairo_save(c);
-        int cursorY1, cursorY2;
-        if (sc->skinFont.respectDPI) {
-            cursorY1 = sc->skinInputBar.iInputPos;
-            cursorY2 = sc->skinInputBar.iInputPos + inputWindow->fontHeight;
-        }
-        else {
-            cursorY1 = sc->skinInputBar.iInputPos - inputWindow->fontHeight;
-            cursorY2 = sc->skinInputBar.iInputPos;
-        }
+        // Calculate the Y position for the underline
+        int underlineY = sc->skinInputBar.iInputPos + inputWindow->fontHeight;
 
+        // Set the length of the underline (you can customize this value)
+        // 设置下划线样式的光标的长度
+        int cursorWidth = inputWindow->fontHeight / 2;  // For example, 1/8th of font height.
+
+        // Set the color for the underline cursor
         fcitx_cairo_set_color(c, &sc->skinInputBar.cursorColor);
-        cairo_set_line_width(c, 1);
-        cairo_move_to(c, inputWindow->pixelCursorPos + 0.5, cursorY1);
-        cairo_line_to(c, inputWindow->pixelCursorPos + 0.5, cursorY2);
+        // 设置下划线样式的光标的粗细
+        cairo_set_line_width(c, 4);
+
+        // Draw a horizontal line as an underline
+        cairo_move_to(c, inputWindow->pixelCursorPos, underlineY);
+        cairo_line_to(c, inputWindow->pixelCursorPos + cursorWidth, underlineY);
         cairo_stroke(c);
 
         cairo_restore(c);

@@ -36,11 +36,11 @@
 #include "classicui.h"
 #include "XlibWindow.h"
 
-#define ROUND_SIZE 80
+#define ROUND_SIZE 2
 #define INPUTWND_WIDTH  50
 #define INPUTWND_HEIGHT 40
 #define INPUT_BAR_HMIN_WIDTH ROUND_SIZE
-#define INPUT_BAR_VMIN_WIDTH 160
+#define INPUT_BAR_VMIN_WIDTH 2
 #define INPUT_BAR_MAX_WIDTH 1000
 #define INPUT_BAR_MAX_HEIGHT 300
 
