@@ -545,7 +545,7 @@ void InputWindowPaint(FcitxXlibWindow* window, cairo_t* c)
         // Set the color for the underline cursor
         fcitx_cairo_set_color(c, &sc->skinInputBar.cursorColor);
         // 设置下划线样式的光标的粗细
-        cairo_set_line_width(c, 4);
+        cairo_set_line_width(c, 2);
 
         // Draw a horizontal line as an underline
         cairo_move_to(c, inputWindow->pixelCursorPos, underlineY);
